@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="chess">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+   
+    <style>
+        
+        #chess {
+    width: 640px;
+    height: 640px;
+    margin: 0.5em;
+    border: 2px solid #808080;
+}
+
+#chess div {
+    float: left;
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+}
+
+#chess div:nth-child(-2n+8), 
+#chess div:nth-child(8) ~ div:nth-child(-2n+15), 
+#chess div:nth-child(16) ~ div:nth-child(-2n+24), 
+#chess div:nth-child(24) ~ div:nth-child(-2n+31), 
+#chess div:nth-child(32) ~ div:nth-child(-2n+40), 
+#chess div:nth-child(40) ~ div:nth-child(-2n+47), 
+#chess div:nth-child(48) ~ div:nth-child(-2n+56), 
+#chess div:nth-child(56) ~ div:nth-child(-2n+63) {
+    background-color: #000;
+}
+            </style>
+    <script src="/socket.io/socket.io.js"></script>
+
+<script>
+    const socket = io.connect('http://localhost:6969/')
+    socket.on('fart', function(){
+        console.log('this is a routine broadcast from root')
+    })
+</script>
+</body>
+</html>

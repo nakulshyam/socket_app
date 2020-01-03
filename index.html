@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chess</title>
+</head>
+<body>
+
+  <button id="fart" onclick="fartnow()">Fart now</button>
+  
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io.connect('http://localhost:6969/');
+      socket.on('connect', function () { // TIP: you can avoid listening on `connect` and listen on events directly too!
+        socket.emit('ferret', 'tobi', 'woot', function (data) { // args are sent in order to acknowledgement function
+          console.log(data); // data will be 'tobi says woot'
+        });
+  });
+      function fartnow(){
+        socket.emit('fart', {fart: 'true'})
+      }
+      socket.on('blue', function (data) {
+        console.log(data);
+        document.getElementsByTagName('body')[0].style.background = 'limegreen'
+        socket.emit('my other event', { my: 'life sucks' });
+      });
+    </script>
+</body>
+
+</html>
